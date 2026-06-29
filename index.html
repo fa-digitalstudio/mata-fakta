@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pemesanan - Jasa Mantau</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#111111',
+                        accent: '#f5b800',
+                        darkgray: '#222222',
+                        lightgray: '#e0e0e0'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .input-focus {
+                @apply focus:outline-none focus:ring-2 focus:ring-accent/70 focus:border-transparent transition-shadow duration-300;
+            }
+            .btn-hover {
+                @apply hover:brightness-110 hover:shadow-lg hover:shadow-accent/20 transition-all duration-300;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-black min-h-screen flex items-center justify-center p-4 md:p-8">
+    <div class="w-full max-w-xl bg-primary/90 backdrop-blur-sm border border-yellow-500/20 rounded-2xl shadow-2xl overflow-hidden">
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-darkgray to-black p-6 border-b border-accent/30">
+            <h2 class="text-3xl md:text-4xl font-bold text-white text-center">JASA DETEKTIF</h2>
+            <p class="text-lightgray text-center mt-2">Membantu mencari fakta, bukan asumsi</p>
+        </div>
+
+        <!-- Form -->
+        <form action="https://formspree.io/f/mrewlrjo" method="POST" class="p-6 md:p-8 space-y-5">
+            <!-- Nama -->
+            <div>
+                <label for="nama" class="block text-lightgray font-medium mb-2">Nama Lengkap</label>
+                <div class="relative">
+                    <i class="fa fa-user absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <input type="text" id="nama" name="nama" required
+                        class="w-full pl-10 pr-4 py-3 bg-darkgray border border-gray-700 rounded-lg text-white input-focus"
+                        placeholder="Masukkan nama Anda">
+                </div>
+            </div>
+
+            <!-- Kontak -->
+            <div>
+                <label for="kontak" class="block text-lightgray font-medium mb-2">Nomor WhatsApp / Telepon</label>
+                <div class="relative">
+                    <i class="fa fa-whatsapp absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <input type="tel" id="kontak" name="kontak" required
+                        class="w-full pl-10 pr-4 py-3 bg-darkgray border border-gray-700 rounded-lg text-white input-focus"
+                        placeholder="Contoh: 0812xxxxxxx">
+                </div>
+            </div>
+
+            <!-- Pilihan Paket -->
+            <div>
+                <label for="paket" class="block text-lightgray font-medium mb-2">Pilih Paket Layanan</label>
+                <div class="relative">
+                    <i class="fa fa-list absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <select id="paket" name="paket" required
+                        class="w-full pl-10 pr-4 py-3 bg-darkgray border border-gray-700 rounded-lg text-white input-focus appearance-none">
+                        <option value="">-- Pilih Paket --</option>
+                        <option value="Paket Mantau Biasa - Rp 150.000">Paket Mantau Biasa - Rp 150.000</option>
+                        <option value="Paket Mantau Sedang - Rp 350.000">Paket Mantau Sedang - Rp 350.000</option>
+                        <option value="Paket Mantau Request - Harga Sesuai">Paket Mantau Request - Harga Sesuai</option>
+                    </select>
+                    <i class="fa fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                </div>
+            </div>
+
+            <!-- Keterangan / Pesan -->
+            <div>
+                <label for="pesan" class="block text-lightgray font-medium mb-2">Detail Permintaan</label>
+                <textarea id="pesan" name="pesan" rows="4"
+                    class="w-full p-3 bg-darkgray border border-gray-700 rounded-lg text-white input-focus"
+                    placeholder="Jelaskan kebutuhan Anda secara rinci..."></textarea>
+            </div>
+
+            <!-- Tombol Kirim -->
+            <button type="submit"
+                class="w-full py-4 bg-accent hover:bg-amber-500 text-black font-bold text-lg rounded-lg btn-hover shadow-md">
+                <i class="fa fa-paper-plane mr-2"></i> Kirim Permintaan
+            </button>
+
+            <p class="text-xs text-gray-500 text-center mt-4">* Kerahasiaan data terjamin | Tidak melayani permintaan melanggar hukum</p>
+        </form>
+    </div>
+</body>
+</html>
