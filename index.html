@@ -6,20 +6,28 @@
     <title>Formulir Pemesanan - Jasa Mantau</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#ffffff',       // Latar utama putih
-                        accent: '#f5b800',        // Tetap warna aksen kuning
-                        darkgray: '#f8f9fa',      // Latar input/area terang
-                        lightgray: '#444444',     // Teks abu-abu gelap agar terbaca
-                        bordergray: '#d1d5db'     // Warna garis batas yang lembut
+                        primary: '#ffffff',
+                        accent: '#d4a574',
+                        accent2: '#2d3142',
+                        lightbg: '#faf8f6',
+                        textdark: '#1a1a1a',
+                        textlight: '#6b7280',
+                        bordergray: '#e5e0d9'
                     },
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                        sans: ['Poppins', 'system-ui', 'sans-serif'],
                     },
+                    boxShadow: {
+                        'premium': '0 10px 40px rgba(0,0,0,0.08)',
+                        'premium-lg': '0 20px 60px rgba(0,0,0,0.12)',
+                    }
                 }
             }
         }
@@ -30,80 +38,132 @@
                 content-visibility: auto;
             }
             .input-focus {
-                @apply focus:outline-none focus:ring-2 focus:ring-accent/70 focus:border-transparent transition-shadow duration-300;
+                @apply focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all duration-300;
             }
             .btn-hover {
-                @apply hover:brightness-110 hover:shadow-lg hover:shadow-accent/20 transition-all duration-300;
+                @apply hover:bg-accent2 hover:shadow-premium-lg transition-all duration-300 transform hover:scale-105;
+            }
+            .premium-line {
+                @apply relative inline-block;
+            }
+            .premium-line::after {
+                @apply absolute bottom-0 left-0 w-12 h-1 bg-accent rounded-full;
+                content: '';
             }
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-gray-100 to-gray-50 min-h-screen flex items-center justify-center p-4 md:p-8">
-    <div class="w-full max-w-xl bg-primary/95 backdrop-blur-sm border border-accent/30 rounded-2xl shadow-2xl overflow-hidden">
-        <!-- Header -->
-        <div class="bg-gradient-to-r from-gray-50 to-gray-100 p-6 border-b border-accent/40">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center">JASA DETEKTIF</h2>
-            <!-- Tulisan KOLAKA ditambahkan di sini -->
-            <h3 class="text-xl md:text-2xl font-semibold text-accent text-center mt-1">KOLAKA</h3>
-            <p class="text-gray-600 text-center mt-2">Membantu mencari fakta, bukan asumsi! <br>Hanya melayani di daerah kab.kolaka</br></p>
+<body class="bg-gradient-to-br from-lightbg via-primary to-lightbg min-h-screen flex items-center justify-center p-4 md:p-8 font-sans">
+    <div class="w-full max-w-2xl">
+        <!-- Decorative top accent line -->
+        <div class="h-1 bg-gradient-to-r from-accent via-accent2 to-accent rounded-full mb-8"></div>
+        
+        <div class="bg-primary/98 backdrop-blur-md border border-bordergray rounded-3xl shadow-premium-lg overflow-hidden">
+            <!-- Header dengan desain premium -->
+            <div class="relative overflow-hidden bg-gradient-to-br from-accent2 to-accent2 p-8 md:p-12">
+                <!-- Decorative circles background -->
+                <div class="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -mr-20 -mt-20"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-accent/8 rounded-full -ml-16 -mb-16"></div>
+                
+                <div class="relative z-10">
+                    <div class="text-center mb-2">
+                        <span class="inline-block px-4 py-1 bg-accent text-accent2 text-xs font-semibold tracking-widest rounded-full mb-4">
+                            MATA - FAKTA
+                        </span>
+                    </div>
+                    <h2 class="text-5xl md:text-6xl font-display font-bold text-white text-center mb-2 drop-shadow-lg">
+                        Jasa Detektif
+                    </h2>
+                    <h3 class="text-3xl md:text-4xl font-display font-semibold text-accent text-center drop-shadow">
+                        Kolaka
+                    </h3>
+                    <p class="text-white text-center mt-4 font-light text-sm md:text-base leading-relaxed">
+                        Membantu mencari fakta, bukan asumsi <span class="text-lg">•</span> <br>
+                        <span class="text-xs text-white/90">Melayani di kawasan Kabupaten Kolaka</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Form dengan spacing premium -->
+            <form action="https://formspree.io/f/mrewlrjo" method="POST" class="p-6 md:p-10 space-y-6">
+                <!-- Nama -->
+                <div class="group">
+                    <label for="nama" class="block text-textdark font-semibold mb-3 text-sm tracking-wide">
+                        <i class="fa fa-user text-accent mr-2"></i> Nama Lengkap
+                    </label>
+                    <div class="relative">
+                        <i class="fa fa-user absolute left-4 top-1/2 -translate-y-1/2 text-accent/40 text-lg"></i>
+                        <input type="text" id="nama" name="nama" required
+                            class="w-full pl-12 pr-4 py-3.5 bg-lightbg border border-bordergray rounded-xl text-textdark font-medium placeholder-textlight/60 input-focus"
+                            placeholder="Masukkan nama Anda">
+                        <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent to-transparent scale-x-0 group-focus-within:scale-x-100 transition-transform duration-300 rounded-full"></div>
+                    </div>
+                </div>
+
+                <!-- Kontak -->
+                <div class="group">
+                    <label for="kontak" class="block text-textdark font-semibold mb-3 text-sm tracking-wide">
+                        <i class="fa fa-phone text-accent mr-2"></i> Nomor WhatsApp / Telepon
+                    </label>
+                    <div class="relative">
+                        <i class="fa fa-phone absolute left-4 top-1/2 -translate-y-1/2 text-accent/40 text-lg"></i>
+                        <input type="tel" id="kontak" name="kontak" required
+                            class="w-full pl-12 pr-4 py-3.5 bg-lightbg border border-bordergray rounded-xl text-textdark font-medium placeholder-textlight/60 input-focus"
+                            placeholder="Contoh: 0812xxxxxxx">
+                        <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent to-transparent scale-x-0 group-focus-within:scale-x-100 transition-transform duration-300 rounded-full"></div>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="h-px bg-gradient-to-r from-bordergray via-accent/20 to-bordergray my-2"></div>
+
+                <!-- Pilihan Paket -->
+                <div class="group">
+                    <label for="paket" class="block text-textdark font-semibold mb-3 text-sm tracking-wide">
+                        <i class="fa fa-cube text-accent mr-2"></i> Pilih Paket Layanan
+                    </label>
+                    <div class="relative">
+                        <i class="fa fa-cube absolute left-4 top-1/2 -translate-y-1/2 text-accent/40 text-lg"></i>
+                        <select id="paket" name="paket" required
+                            class="w-full pl-12 pr-10 py-3.5 bg-lightbg border border-bordergray rounded-xl text-textdark font-medium input-focus appearance-none cursor-pointer">
+                            <option value="">-- Pilih Paket --</option>
+                            <option value="Paket Mantau Biasa - Rp 150.000">Paket Mantau Biasa - Rp 150.000</option>
+                            <option value="Paket Mantau Sedang - Rp 350.000">Paket Mantau Sedang - Rp 350.000</option>
+                            <option value="Paket Mantau Request - Harga Sesuai">Paket Mantau Request - Harga Sesuai</option>
+                        </select>
+                        <i class="fa fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-accent/40 text-lg pointer-events-none"></i>
+                        <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent to-transparent scale-x-0 group-focus-within:scale-x-100 transition-transform duration-300 rounded-full"></div>
+                    </div>
+                </div>
+
+                <!-- Keterangan / Pesan -->
+                <div class="group">
+                    <label for="pesan" class="block text-textdark font-semibold mb-3 text-sm tracking-wide">
+                        <i class="fa fa-pencil text-accent mr-2"></i> Detail Permintaan
+                    </label>
+                    <textarea id="pesan" name="pesan" rows="4"
+                        class="w-full p-4 bg-lightbg border border-bordergray rounded-xl text-textdark font-medium placeholder-textlight/60 input-focus resize-none"
+                        placeholder="Jelaskan kebutuhan Anda secara rinci..."></textarea>
+                    <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent to-transparent scale-x-0 group-focus-within:scale-x-100 transition-transform duration-300 rounded-full"></div>
+                </div>
+
+                <!-- Tombol Kirim dengan desain premium -->
+                <button type="submit"
+                    class="w-full py-4 bg-gradient-to-r from-accent to-accent hover:from-accent2 hover:to-accent2 text-primary font-bold text-lg rounded-xl btn-hover shadow-premium font-display tracking-wider mt-8">
+                    <i class="fa fa-paper-plane mr-3"></i> Kirim Permintaan
+                </button>
+
+                <!-- Footer note -->
+                <div class="mt-6 p-4 bg-gradient-to-r from-accent/5 to-accent2/5 border border-accent/20 rounded-xl">
+                    <p class="text-xs text-textlight text-center font-medium">
+                        <i class="fa fa-shield text-accent mr-2"></i> Kerahasiaan data terjamin | Tidak melayani permintaan melanggar hukum
+                    </p>
+                </div>
+            </form>
         </div>
 
-        <!-- Form -->
-        <form action="https://formspree.io/f/mrewlrjo" method="POST" class="p-6 md:p-8 space-y-5">
-            <!-- Nama -->
-            <div>
-                <label for="nama" class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
-                <div class="relative">
-                    <i class="fa fa-user absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                    <input type="text" id="nama" name="nama" required
-                        class="w-full pl-10 pr-4 py-3 bg-darkgray border border-bordergray rounded-lg text-gray-900 input-focus"
-                        placeholder="Masukkan nama Anda">
-                </div>
-            </div>
-
-            <!-- Kontak -->
-            <div>
-                <label for="kontak" class="block text-gray-700 font-medium mb-2">Nomor WhatsApp / Telepon</label>
-                <div class="relative">
-                    <i class="fa fa-whatsapp absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                    <input type="tel" id="kontak" name="kontak" required
-                        class="w-full pl-10 pr-4 py-3 bg-darkgray border border-bordergray rounded-lg text-gray-900 input-focus"
-                        placeholder="Contoh: 0812xxxxxxx">
-                </div>
-            </div>
-
-            <!-- Pilihan Paket -->
-            <div>
-                <label for="paket" class="block text-gray-700 font-medium mb-2">Pilih Paket Layanan</label>
-                <div class="relative">
-                    <i class="fa fa-list absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                    <select id="paket" name="paket" required
-                        class="w-full pl-10 pr-4 py-3 bg-darkgray border border-bordergray rounded-lg text-gray-900 input-focus appearance-none">
-                        <option value="">-- Pilih Paket --</option>
-                        <option value="Paket Mantau Biasa - Rp 150.000">Paket Mantau Biasa - Rp 150.000</option>
-                        <option value="Paket Mantau Sedang - Rp 350.000">Paket Mantau Sedang - Rp 350.000</option>
-                        <option value="Paket Mantau Request - Harga Sesuai">Paket Mantau Request - Harga Sesuai</option>
-                    </select>
-                    <i class="fa fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none"></i>
-                </div>
-            </div>
-
-            <!-- Keterangan / Pesan -->
-            <div>
-                <label for="pesan" class="block text-gray-700 font-medium mb-2">Detail Permintaan</label>
-                <textarea id="pesan" name="pesan" rows="4"
-                    class="w-full p-3 bg-darkgray border border-bordergray rounded-lg text-gray-900 input-focus"
-                    placeholder="Jelaskan kebutuhan Anda secara rinci..."></textarea>
-            </div>
-
-            <!-- Tombol Kirim -->
-            <button type="submit"
-                class="w-full py-4 bg-accent hover:bg-amber-500 text-gray-900 font-bold text-lg rounded-lg btn-hover shadow-md">
-                <i class="fa fa-paper-plane mr-2"></i> Kirim Permintaan
-            </button>
-
-            <p class="text-xs text-gray-500 text-center mt-4">* Kerahasiaan data terjamin | Tidak melayani permintaan melanggar hukum</p>
-        </form>
+        <!-- Decorative bottom accent line -->
+        <div class="h-1 bg-gradient-to-r from-accent to-accent2 rounded-full mt-8"></div>
     </div>
 </body>
 </html>
