@@ -11,10 +11,11 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#111111',
-                        accent: '#f5b800',
-                        darkgray: '#222222',
-                        lightgray: '#e0e0e0'
+                        primary: '#ffffff',       // Latar utama putih
+                        accent: '#f5b800',        // Tetap warna aksen kuning
+                        darkgray: '#f8f9fa',      // Latar input/area terang
+                        lightgray: '#444444',     // Teks abu-abu gelap agar terbaca
+                        bordergray: '#d1d5db'     // Warna garis batas yang lembut
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -37,65 +38,65 @@
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-gray-900 to-black min-h-screen flex items-center justify-center p-4 md:p-8">
-    <div class="w-full max-w-xl bg-primary/90 backdrop-blur-sm border border-yellow-500/20 rounded-2xl shadow-2xl overflow-hidden">
+<body class="bg-gradient-to-br from-gray-100 to-gray-50 min-h-screen flex items-center justify-center p-4 md:p-8">
+    <div class="w-full max-w-xl bg-primary/95 backdrop-blur-sm border border-accent/30 rounded-2xl shadow-2xl overflow-hidden">
         <!-- Header -->
-        <div class="bg-gradient-to-r from-darkgray to-black p-6 border-b border-accent/30">
-            <h2 class="text-3xl md:text-4xl font-bold text-white text-center">JASA DETEKTIF</h2>
-            <p class="text-lightgray text-center mt-2">Membantu mencari fakta, bukan asumsi</p>
+        <div class="bg-gradient-to-r from-gray-50 to-gray-100 p-6 border-b border-accent/40">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center">JASA DETEKTIF</h2>
+            <p class="text-gray-600 text-center mt-2">Membantu mencari fakta, bukan asumsi</p>
         </div>
 
         <!-- Form -->
         <form action="https://formspree.io/f/mrewlrjo" method="POST" class="p-6 md:p-8 space-y-5">
             <!-- Nama -->
             <div>
-                <label for="nama" class="block text-lightgray font-medium mb-2">Nama Lengkap</label>
+                <label for="nama" class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
                 <div class="relative">
-                    <i class="fa fa-user absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <i class="fa fa-user absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
                     <input type="text" id="nama" name="nama" required
-                        class="w-full pl-10 pr-4 py-3 bg-darkgray border border-gray-700 rounded-lg text-white input-focus"
+                        class="w-full pl-10 pr-4 py-3 bg-darkgray border border-bordergray rounded-lg text-gray-900 input-focus"
                         placeholder="Masukkan nama Anda">
                 </div>
             </div>
 
             <!-- Kontak -->
             <div>
-                <label for="kontak" class="block text-lightgray font-medium mb-2">Nomor WhatsApp / Telepon</label>
+                <label for="kontak" class="block text-gray-700 font-medium mb-2">Nomor WhatsApp / Telepon</label>
                 <div class="relative">
-                    <i class="fa fa-whatsapp absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <i class="fa fa-whatsapp absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
                     <input type="tel" id="kontak" name="kontak" required
-                        class="w-full pl-10 pr-4 py-3 bg-darkgray border border-gray-700 rounded-lg text-white input-focus"
-                        placeholder="Contoh: 0812xxxxxxx">
+                        class="w-full pl-10 pr-4 py-3 bg-darkgray border border-bordergray rounded-lg text-gray-900 input-focus"
+                        placeholder="Contoh: 0821xxxxxxx">
                 </div>
             </div>
 
             <!-- Pilihan Paket -->
             <div>
-                <label for="paket" class="block text-lightgray font-medium mb-2">Pilih Paket Layanan</label>
+                <label for="paket" class="block text-gray-700 font-medium mb-2">Pilih Paket Layanan</label>
                 <div class="relative">
-                    <i class="fa fa-list absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <i class="fa fa-list absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
                     <select id="paket" name="paket" required
-                        class="w-full pl-10 pr-4 py-3 bg-darkgray border border-gray-700 rounded-lg text-white input-focus appearance-none">
+                        class="w-full pl-10 pr-4 py-3 bg-darkgray border border-bordergray rounded-lg text-gray-900 input-focus appearance-none">
                         <option value="">-- Pilih Paket --</option>
                         <option value="Paket Mantau Biasa - Rp 150.000">Paket Mantau Biasa - Rp 150.000</option>
                         <option value="Paket Mantau Sedang - Rp 350.000">Paket Mantau Sedang - Rp 350.000</option>
                         <option value="Paket Mantau Request - Harga Sesuai">Paket Mantau Request - Harga Sesuai</option>
                     </select>
-                    <i class="fa fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                    <i class="fa fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none"></i>
                 </div>
             </div>
 
             <!-- Keterangan / Pesan -->
             <div>
-                <label for="pesan" class="block text-lightgray font-medium mb-2">Detail Permintaan</label>
+                <label for="pesan" class="block text-gray-700 font-medium mb-2">Detail Permintaan</label>
                 <textarea id="pesan" name="pesan" rows="4"
-                    class="w-full p-3 bg-darkgray border border-gray-700 rounded-lg text-white input-focus"
+                    class="w-full p-3 bg-darkgray border border-bordergray rounded-lg text-gray-900 input-focus"
                     placeholder="Jelaskan kebutuhan Anda secara rinci..."></textarea>
             </div>
 
             <!-- Tombol Kirim -->
             <button type="submit"
-                class="w-full py-4 bg-accent hover:bg-amber-500 text-black font-bold text-lg rounded-lg btn-hover shadow-md">
+                class="w-full py-4 bg-accent hover:bg-amber-500 text-gray-900 font-bold text-lg rounded-lg btn-hover shadow-md">
                 <i class="fa fa-paper-plane mr-2"></i> Kirim Permintaan
             </button>
 
